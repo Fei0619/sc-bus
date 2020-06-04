@@ -13,7 +13,7 @@ import javax.persistence.*
 @Data
 @Entity
 @Table(
-    name = "bus-service",
+    name = "bus_service",
     indexes = [
       Index(name = "service_id", columnList = "service_id")
     ])

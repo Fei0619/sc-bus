@@ -11,7 +11,7 @@ import javax.persistence.*
 @Data
 @Entity
 @Table(
-    name = "bus-config",
+    name = "bus_config",
     indexes = [
       Index(name = "config_id", columnList = "config_id"),
       Index(name = "subscribe_id", columnList = "subscribe_id")
