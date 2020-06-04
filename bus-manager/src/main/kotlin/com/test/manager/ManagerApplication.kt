@@ -21,5 +21,6 @@ import org.springframework.scheduling.annotation.EnableScheduling
 class ManagerApplication
 
 fun main(args: Array<String>) {
+  System.setProperty("hibernate.dialect.storage_engine", "innodb")
   runApplication<ManagerApplication>(*args)
 }

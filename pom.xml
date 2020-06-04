@@ -11,6 +11,7 @@
   <modules>
     <module>bus-manager</module>
     <module>bus-common</module>
+    <module>bus-sdk</module>
   </modules>
 
   <properties>
