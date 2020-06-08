@@ -12,10 +12,12 @@
     <module>bus-manager</module>
     <module>bus-common</module>
     <module>bus-sdk</module>
+    <module>bus-core</module>
   </modules>
 
   <properties>
     <bus-common.version>1.0.0</bus-common.version>
+    <bus-sdk.version>1.0.0</bus-sdk.version>
 
     <kotlin.version>1.3.72</kotlin.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
