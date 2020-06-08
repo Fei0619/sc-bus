@@ -2,6 +2,8 @@ package com.test.core.conf
 
 import com.test.core.processor.DelayProcessor
 import com.test.core.processor.EventPublisher
+import com.test.core.processor.FailPushProcessor
+import com.test.core.processor.impl.DefaultFailPushProcessor
 import com.test.core.properties.BusProperties
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean
@@ -13,6 +15,12 @@ import org.springframework.context.annotation.Configuration
  */
 @Configuration
 class DefaultBeanConfig(private val busProperties: BusProperties) {
+
+  @Bean
+  @ConditionalOnMissingBean
+  fun failPushProcessor(delayProcessor: DelayProcessor): FailPushProcessor {
+    return DefaultFailPushProcessor(delayProcessor)
+  }
 
   @Bean
   @ConditionalOnMissingBean

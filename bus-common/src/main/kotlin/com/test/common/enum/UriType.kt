@@ -4,16 +4,16 @@ package com.test.common.enum
  * @author 费世程
  * @date 2020/6/4 15:43
  */
-enum class UriTypeEnum {
+enum class UriType {
 
   /**
    * 服务实际地址
    */
-  Actual_Address,
+  actual_address,
   /**
    * 服务名
    */
-  Application_Name,
+  application_name,
   ;
 
 }

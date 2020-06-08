@@ -1,7 +1,7 @@
 package com.test.common.entity
 
 import cn.sh.ideal.nj.share.common.json.toJsonString
-import com.test.common.enum.UriTypeEnum
+import com.test.common.enum.UriType
 import lombok.Data
 import javax.persistence.*
 
@@ -50,7 +50,7 @@ class BusService {
    */
   @Column(name = "uri_type", nullable = false,
       columnDefinition = "varchar(32) comment '推送地址类型'")
-  var uriType: UriTypeEnum? = null
+  var uriType: UriType? = null
 
   override fun toString(): String = this.toJsonString()
 
