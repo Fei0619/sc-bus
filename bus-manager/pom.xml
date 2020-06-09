@@ -17,6 +17,11 @@
       <artifactId>bus-common</artifactId>
       <version>${bus-common.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.test</groupId>
+      <artifactId>bus-dao</artifactId>
+      <version>${bus-dao.version}</version>
+    </dependency>
     <!-- jpa -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

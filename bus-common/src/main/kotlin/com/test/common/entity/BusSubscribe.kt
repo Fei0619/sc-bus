@@ -40,6 +40,12 @@ class BusSubscribe {
       columnDefinition = "int(11) comment '事件id'")
   var eventId: Int? = null
   /**
+   * 事件编码
+   */
+  @Column(name = "event_code", nullable = false,
+      columnDefinition = "varchar(64) comment '事件编码'")
+  var eventCode: String? = null
+  /**
    * 推送条件
    */
   @Column(name = "conditions",
@@ -49,8 +55,8 @@ class BusSubscribe {
    * 是否广播
    */
   @Column(name = "is_broadcast", nullable = false,
-      columnDefinition = "boolean comment '是否广播'")
-  var isBroadcast: Boolean? = null
+      columnDefinition = "tinyint comment '是否广播'")
+  var isBroadcast: Int? = null
   /**
    * 订阅说明
    */

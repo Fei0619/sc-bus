@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bus-common" />
         <module name="bus-core" />
+        <module name="bus-dao" />
         <module name="bus-manager" />
         <module name="bus-sdk" />
       </profile>

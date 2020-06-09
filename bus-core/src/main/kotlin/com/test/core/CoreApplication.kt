@@ -17,7 +17,7 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @EnableScheduling
 @EnableDiscoveryClient
 @EnableConfigurationProperties
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["com.test.core", "com.test.dao"])
 class CoreApplication
 
 fun main(args: Array<String>) {

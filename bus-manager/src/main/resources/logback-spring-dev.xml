@@ -23,7 +23,7 @@
     <logger name="com.test.manager" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
-    <logger name="com.test.manager.repository" level="warn" additivity="false">
+    <logger name="com.test.dao.repository" level="warn" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
     <logger name="com.netflix.discovery.shared.resolver.aws" level="warn" additivity="false">

@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bus-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bus-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bus-dao" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bus-manager" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/bus-sdk" charset="UTF-8" />
   </component>

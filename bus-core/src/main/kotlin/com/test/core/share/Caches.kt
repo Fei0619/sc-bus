@@ -2,10 +2,14 @@ package com.test.core.share
 
 import com.test.common.entity.BusConfig
 import com.test.common.pojo.SubscribeDetails
+import com.test.common.pojo.EventSubscription
 import com.test.common.pojo.SubscribeInfo
-import com.test.core.pojo.EventSubscription
-import com.test.core.repository.ServiceRepository
-import com.test.core.repository.SubscribeRepository
+import com.test.dao.BusEventDao
+import com.test.dao.repository.EventRepository
+import com.test.dao.repository.ServiceRepository
+import com.test.dao.repository.SubscribeRepository
+import org.apache.commons.lang.StringUtils
+import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 
@@ -14,13 +18,15 @@ import org.springframework.stereotype.Component
  * @date 2020/6/8 17:37
  */
 @Component
-class Caches(private val serviceRepository: ServiceRepository,
-             private val subscribeRepository: SubscribeRepository) {
+class Caches(private val busEventDao: BusEventDao) {
 
+  companion object {
+    private val logger = LoggerFactory.getLogger(Caches::class.java)
+    private lateinit var localCache: LocalCache
 
-  fun refreshLocalCache() {
-    val subscribeList = subscribeRepository.findAll()
-    val localCache = LocalCache()
+    fun getSubscribes(eventCode: String): EventSubscription? {
+      return localCache.eventSubscriptionMapper[eventCode]
+    }
 
   }
 
@@ -32,9 +38,17 @@ class Caches(private val serviceRepository: ServiceRepository,
     refreshLocalCache()
   }
 
+  fun refreshLocalCache() {
+    logger.debug("刷新本地缓存...")
+    val localCache = LocalCache()
+    val eventSubList = busEventDao.listAllEventSubscription()
+    localCache.eventSubscriptionMapper = eventSubList.associateBy { it.eventCode }
+    localCache.subscribeDetailsMapper = eventSubList.flatMap { it.subDetails }.associateBy { it.subscribeId }
+  }
+
   private class LocalCache {
     /**
-     * 事件id -> 该事件的描述信息和订阅信息
+     * 事件编码 -> 该事件的描述信息和订阅信息
      */
     lateinit var eventSubscriptionMapper: Map<String, EventSubscription>
     /**

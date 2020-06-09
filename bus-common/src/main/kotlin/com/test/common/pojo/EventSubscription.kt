@@ -1,7 +1,6 @@
-package com.test.core.pojo
+package com.test.common.pojo
 
 import cn.sh.ideal.nj.share.common.json.toJsonString
-import com.test.common.pojo.SubscribeDetails
 
 /**
  * @author 费世程
@@ -11,7 +10,7 @@ class EventSubscription {
 
   var eventCode: String = ""
   var eventName: String = ""
-  var subDetails: List<SubscribeDetails> = ArrayList()
+  var subDetails = ArrayList<SubscribeDetails>()
 
   override fun toString(): String = this.toJsonString()
 }

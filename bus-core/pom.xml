@@ -17,6 +17,22 @@
       <artifactId>bus-common</artifactId>
       <version>${bus-common.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.test</groupId>
+      <artifactId>bus-dao</artifactId>
+      <version>${bus-dao.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${validation-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate-validator.version}</version>
+    </dependency>
     <!-- jpa -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
