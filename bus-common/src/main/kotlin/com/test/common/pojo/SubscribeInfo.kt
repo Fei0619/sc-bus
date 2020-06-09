@@ -10,11 +10,33 @@ import com.test.common.enum.UriType
 class SubscribeInfo : Cloneable {
 
   var subscribeId: Int? = null
+  /**
+   * 服务id
+   */
   var serviceId: Int? = null
+  /**
+   * 服务名称
+   */
   var serviceName: String? = null
+  /**
+   * 服务描述
+   */
   var serviceDesc: String? = null
+  /**
+   * 推送地址
+   */
   var pushUri: String = ""
+  /**
+   *地址类型
+   */
   var uriType: UriType = UriType.actual_address
+  /**
+   * 订阅条件
+   */
+  var conditions: String = ""
+  /**
+   * 重试次数
+   */
   var retryCount: Int = 0
 
   public override fun clone(): SubscribeInfo {

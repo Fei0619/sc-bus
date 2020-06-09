@@ -17,7 +17,7 @@ import javax.persistence.*
     indexes = [
       Index(name = "service_id", columnList = "service_id")
     ])
-class BusService {
+open class BusService {
 
   /**
    * 服务id
