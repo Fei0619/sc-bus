@@ -5,6 +5,7 @@ import com.test.common.Initable
 import com.test.common.pojo.InnerEventMessage
 import com.test.common.pojo.PublishDetails
 import com.test.common.pojo.SubscribeInfo
+import com.test.core.pojo.FailPushRetryInfo
 import reactor.core.publisher.Mono
 
 /**
@@ -22,6 +23,6 @@ interface DelayProcessor : Initable, Destroyable {
    */
   fun delay(publishDetails: PublishDetails): Mono<Unit>
 
-  fun delay(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit>
+  fun delay(failPushRetryInfo: FailPushRetryInfo): Mono<Unit>
 
 }

@@ -8,7 +8,7 @@ import com.test.common.date.DateUtils
  * @author 费世程
  * @date 2020/6/4 22:49
  */
-class PublishDetails {
+class PublishDetails() {
 
   var id: Int? = null
   var createTimestamp: Long = System.currentTimeMillis()
@@ -33,6 +33,14 @@ class PublishDetails {
    * 订阅者信息列表
    */
   var subscribes: List<SubscribeInfo> = emptyList()
+
+  constructor(eventMessage: InnerEventMessage, subscribes: List<SubscribeInfo>) : this() {
+    this.eventId = eventMessage.eventId
+    this.eventCode = eventMessage.eventCode
+    this.needDelay = eventMessage.needDelay()
+    this.eventMessage = eventMessage
+    this.subscribes = subscribes
+  }
 
   override fun toString(): String = this.toJsonString()
 

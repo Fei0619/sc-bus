@@ -5,9 +5,7 @@ import com.test.core.processor.DelayProcessor
 import com.test.core.processor.EventPublisher
 import com.test.core.processor.FailPushProcessor
 import com.test.core.processor.IdempotentProcessor
-import com.test.core.processor.impl.CacheIdempotentProcessor
-import com.test.core.processor.impl.DefaultFailPushProcessor
-import com.test.core.processor.impl.RedisIdempotentProcessor
+import com.test.core.processor.impl.*
 import com.test.core.properties.BusProperties
 import com.test.core.properties.Module
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
@@ -27,6 +25,9 @@ class DefaultBeanConfig(private val busProperties: BusProperties) {
     return ReactiveRedisClient(template)
   }
 
+  /**
+   * 幂等
+   */
   @Bean
   @ConditionalOnMissingBean
   fun idempotentProcessor(reactiveRedisClient: ReactiveRedisClient): IdempotentProcessor {
@@ -37,22 +38,36 @@ class DefaultBeanConfig(private val busProperties: BusProperties) {
     }
   }
 
+  /**
+   * 失败处理器
+   */
   @Bean
   @ConditionalOnMissingBean
   fun failPushProcessor(delayProcessor: DelayProcessor): FailPushProcessor {
     return DefaultFailPushProcessor(delayProcessor)
   }
 
+  /**
+   * 延迟处理器
+   */
   @Bean
   @ConditionalOnMissingBean
   fun delayProcessor(): DelayProcessor {
-    TODO()
+    if (busProperties.modules.contains(Module.rabbitmq)) {
+      return RabbitDelayProcessor()
+    } else if (busProperties.modules.contains(Module.kafka)) {
+      return KafkaDelayProcessor()
+    }
+    return QueueDelayProcessor()
   }
 
+  /**
+   * 消息发布
+   */
   @Bean
   @ConditionalOnMissingBean
   fun eventPublisher(delayProcessor: DelayProcessor): EventPublisher {
-    TODO()
+    return AsyncEventPublisher(delayProcessor)
   }
 
 }

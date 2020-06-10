@@ -3,10 +3,11 @@ package com.test.core.controller
 import com.test.common.enum.UriType
 import com.test.common.json.JsonUtils
 import com.test.common.pojo.InnerEventMessage
+import com.test.common.pojo.PublishDetails
 import com.test.common.pojo.SubscribeInfo
 import com.test.core.processor.EventPublisher
-import com.test.core.processor.FailPushProcessor
 import com.test.core.processor.IdempotentProcessor
+import com.test.core.properties.BusProperties
 import com.test.core.share.Caches
 import com.test.sdk.Res
 import org.apache.commons.lang.StringUtils
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Mono
 import reactor.kotlin.core.publisher.toFlux
-import java.util.regex.Pattern
+import reactor.kotlin.core.publisher.toMono
 import javax.validation.Valid
 
 /**
@@ -28,9 +29,9 @@ import javax.validation.Valid
 @RequestMapping("/publish")
 @RestController
 class PublishController(private val eventPublisher: EventPublisher,
-                        private val failPushProcessor: FailPushProcessor,
                         private val idempotentProcessor: IdempotentProcessor,
-                        private val springClientFactory: SpringClientFactory) {
+                        private val springClientFactory: SpringClientFactory,
+                        private val busProperties: BusProperties) {
 
   private val logger = LoggerFactory.getLogger(PublishController::class.java)
 
@@ -41,11 +42,27 @@ class PublishController(private val eventPublisher: EventPublisher,
     if (logger.isDebugEnabled) {
       startTimeMillis = System.currentTimeMillis()
     }
-
-
-
-
-    TODO()
+    val idempotentExpireSecond = busProperties.idempotentExpireSecond
+    return idempotentProcessor.idempotent(message.idempotentKey, idempotentExpireSecond).flatMap {
+      if (it) {
+        val actualSubList = getActualSubscribes(message)
+        if (actualSubList.isEmpty()) {
+          logger.info("没有订阅此事件的服务 --> eventCode=${message.eventCode}")
+          Res.ok("没有订阅此事件的服务 --> eventCode=${message.eventCode}").toMono()
+        } else {
+          val publishDetails = PublishDetails(message, actualSubList)
+          eventPublisher.publishOne(publishDetails)
+        }
+      } else {
+        logger.info("此事件在 $idempotentExpireSecond 期间重复，已被丢弃...")
+        Res.ok("此事件在 $idempotentExpireSecond 期间重复，已被丢弃...").toMono()
+      }
+    }.doFinally {
+      if (startTimeMillis != null) {
+        val timeConsume = System.currentTimeMillis() - startTimeMillis
+        logger.debug("eventCode=${message.eventCode}事件推送完成，耗时：$timeConsume ms")
+      }
+    }
   }
 
   @PostMapping

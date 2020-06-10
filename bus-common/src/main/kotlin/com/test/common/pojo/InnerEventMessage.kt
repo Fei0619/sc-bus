@@ -17,16 +17,20 @@ class InnerEventMessage {
   @NotEmpty(message = "推送内容不能为空！")
   var payload: String? = null
   var idempotentKey: String = ""
-  var delayMillis: Long? = null
+  var delayMillis: Long = 0
   /**
    * key:value
    */
   var tags: Set<String> = emptySet()
   var eventTime = System.currentTimeMillis()
 
+  fun needDelay(): Boolean {
+    return delayMillis > 0
+  }
+
   fun matches(conditions: Set<String>?): Boolean {
-    if (conditions==null || conditions.isEmpty()) return true
-    if(tags.isEmpty()) return false
+    if (conditions == null || conditions.isEmpty()) return true
+    if (tags.isEmpty()) return false
     val pattern = Pattern.compile(":")
     val tagMap = tags
         .map { it.split(pattern, 2) }

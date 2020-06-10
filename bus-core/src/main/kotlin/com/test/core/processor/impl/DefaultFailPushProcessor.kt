@@ -2,6 +2,7 @@ package com.test.core.processor.impl
 
 import com.test.common.pojo.InnerEventMessage
 import com.test.common.pojo.SubscribeInfo
+import com.test.core.pojo.FailPushRetryInfo
 import com.test.core.processor.DelayProcessor
 import com.test.core.processor.FailPushProcessor
 import reactor.core.publisher.Mono
@@ -14,6 +15,7 @@ class DefaultFailPushProcessor(private val delayProcessor: DelayProcessor)
   : FailPushProcessor {
   override fun failProcessor(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit> {
     subscribeInfo.retryCount += 1
-    return delayProcessor.delay(subscribeInfo, eventMessage)
+    val failPushRetryInfo = FailPushRetryInfo(subscribeInfo, eventMessage)
+    return delayProcessor.delay(failPushRetryInfo)
   }
 }
