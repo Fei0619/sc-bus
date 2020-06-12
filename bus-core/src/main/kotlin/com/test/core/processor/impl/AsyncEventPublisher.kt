@@ -25,8 +25,8 @@ class AsyncEventPublisher(private val delayProcessor: DelayProcessor) : EventPub
   private val logger = LoggerFactory.getLogger(AsyncEventPublisher::class.java)
   private val queue = ArrayBlockingQueue<PublishDetails>(1.shl(14))
 
+  private val fileName = "async_publish_details"
   private var consumptionThread: Thread? = null
-  private var fileName = "async_publish_details"
 
   @Volatile
   private var start = true
@@ -102,6 +102,7 @@ class AsyncEventPublisher(private val delayProcessor: DelayProcessor) : EventPub
               bfd.newLine()
             }
             bfd.flush()
+            bfd.close()
           }
         }
       }

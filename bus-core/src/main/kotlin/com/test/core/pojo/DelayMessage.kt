@@ -1,6 +1,5 @@
 package com.test.core.pojo
 
-import java.awt.TrayIcon
 import java.util.concurrent.Delayed
 import java.util.concurrent.TimeUnit
 
@@ -13,7 +12,7 @@ class DelayMessage<T>(
     /**
      * 消息类型
      */
-    var messageType: TrayIcon.MessageType,
+    var messageType: MessageType,
     /**
      * 到期时间
      */
