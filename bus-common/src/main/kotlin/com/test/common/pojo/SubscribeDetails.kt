@@ -12,6 +12,9 @@ class SubscribeDetails : BusService() {
 
   var subscribeId: Int = -1
   var eventCode: String? = null
+  /**
+   * eg: tenantId=1&userId^1,2,3|tenantId=2|tenantId=3&age>20
+   */
   var conditions: String = ""
   var isBroadcast: Int = 0
   var subscribeDesc: String? = null

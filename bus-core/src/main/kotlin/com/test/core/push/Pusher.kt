@@ -33,7 +33,7 @@ abstract class Pusher(private val uriType: UriType,
       pushMap[uriType] = pusher
     }
 
-    fun push(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit> {
+    fun push(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<Unit> {
       val uriType = subscribeInfo.uriType
       val pusher = pushMap[uriType]
       if (pusher == null) {
@@ -45,7 +45,7 @@ abstract class Pusher(private val uriType: UriType,
 
   }
 
-  protected fun doPush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit> {
+  protected fun doPush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<Unit> {
     val pushTime = System.currentTimeMillis()
     return executePush(subscribeInfo, eventMessage).map { response ->
       response.pushTime = pushTime
@@ -66,6 +66,6 @@ abstract class Pusher(private val uriType: UriType,
     }
   }
 
-  abstract fun executePush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<ExecutePushResponse>
+  abstract fun executePush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<ExecutePushResponse>
 
 }

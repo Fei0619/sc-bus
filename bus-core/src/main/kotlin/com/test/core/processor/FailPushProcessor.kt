@@ -10,6 +10,6 @@ import reactor.core.publisher.Mono
  */
 interface FailPushProcessor {
 
-  fun failProcessor(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit>
+  fun failProcessor(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<Unit>
 
 }

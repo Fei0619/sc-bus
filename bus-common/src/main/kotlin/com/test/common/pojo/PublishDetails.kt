@@ -28,13 +28,13 @@ class PublishDetails() {
   /**
    * 事件详情
    */
-  var eventMessage: InnerEventMessage? = null
+  var eventMessage: InnerEventMessage<*>? = null
   /**
    * 订阅者信息列表
    */
   var subscribes: List<SubscribeInfo> = emptyList()
 
-  constructor(eventMessage: InnerEventMessage, subscribes: List<SubscribeInfo>) : this() {
+  constructor(eventMessage: InnerEventMessage<*>, subscribes: List<SubscribeInfo>) : this() {
     this.eventId = eventMessage.eventId
     this.eventCode = eventMessage.eventCode
     this.needDelay = eventMessage.needDelay()

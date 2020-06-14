@@ -14,6 +14,7 @@
     <module>bus-sdk</module>
     <module>bus-core</module>
     <module>bus-dao</module>
+    <module>bus-instance</module>
   </modules>
 
   <properties>

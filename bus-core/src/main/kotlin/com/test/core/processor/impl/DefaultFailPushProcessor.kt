@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono
  */
 class DefaultFailPushProcessor(private val delayProcessor: DelayProcessor)
   : FailPushProcessor {
-  override fun failProcessor(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<Unit> {
+  override fun failProcessor(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<Unit> {
     subscribeInfo.retryCount += 1
     val failPushRetryInfo = FailPushRetryInfo(subscribeInfo, eventMessage)
     return delayProcessor.delay(failPushRetryInfo)

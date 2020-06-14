@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono
 abstract class WebClientPusher(uriType: UriType, failPushProcessor: FailPushProcessor)
   : Pusher(uriType, failPushProcessor) {
 
-  override fun executePush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage): Mono<ExecutePushResponse> {
+  override fun executePush(subscribeInfo: SubscribeInfo, eventMessage: InnerEventMessage<*>): Mono<ExecutePushResponse> {
     val webClient = getWebClient()
     return webClient.post().uri(subscribeInfo.pushUri).body(BodyInserters.fromValue(eventMessage)).exchange().flatMap { clientResponse ->
       val httpStatus = clientResponse.statusCode()

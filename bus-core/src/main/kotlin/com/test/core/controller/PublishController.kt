@@ -37,7 +37,7 @@ class PublishController(private val eventPublisher: EventPublisher,
 
 
   @PostMapping("/one")
-  fun publishOne(@RequestBody @Valid message: InnerEventMessage): Mono<Res> {
+  fun publishOne(@RequestBody @Valid message: InnerEventMessage<*>): Mono<Res> {
     var startTimeMillis: Long? = null
     if (logger.isDebugEnabled) {
       startTimeMillis = System.currentTimeMillis()
@@ -66,7 +66,7 @@ class PublishController(private val eventPublisher: EventPublisher,
   }
 
   @PostMapping
-  fun batchPublish(@RequestBody @Valid messages: List<InnerEventMessage>): Mono<Res> {
+  fun batchPublish(@RequestBody @Valid messages: List<InnerEventMessage<*>>): Mono<Res> {
     var startTimeMillis: Long? = null
     if (logger.isDebugEnabled) {
       startTimeMillis = System.currentTimeMillis()
@@ -83,7 +83,7 @@ class PublishController(private val eventPublisher: EventPublisher,
   /**
    * 获取事件的实际订阅者
    */
-  fun getActualSubscribes(message: InnerEventMessage): List<SubscribeInfo> {
+  fun getActualSubscribes(message: InnerEventMessage<*>): List<SubscribeInfo> {
     val eventCode = message.eventCode
     if (StringUtils.isBlank(eventCode)) {
       return emptyList()
