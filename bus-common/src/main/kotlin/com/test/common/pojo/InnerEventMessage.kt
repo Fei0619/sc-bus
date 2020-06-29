@@ -3,8 +3,6 @@ package com.test.common.pojo
 import cn.sh.ideal.nj.share.common.json.toJsonString
 import org.hibernate.validator.constraints.NotEmpty
 import java.util.*
-import java.util.regex.Pattern
-import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 /**
@@ -43,15 +41,15 @@ class InnerEventMessage<T> {
       for (subKey in subKeys) {
         if (!pubKeys.contains(subKey)) {
           i++
-          continue
+          break
         }
         val pub = tags[subKey]
         val sub = map[subKey]
         if (!pub!!.containsAll(sub!!)) {
           i++
-          continue
-        } else {
           break
+        } else {
+          continue
         }
       }
     }
@@ -62,5 +60,18 @@ class InnerEventMessage<T> {
   }
 
   override fun toString(): String = this.toJsonString()
+
+}
+
+fun main() {
+  val pubMsg = InnerEventMessage<String>()
+  val tags = HashMap<String, Set<String>>()
+  tags["tenantId"] = listOf("1", "2").toSet()
+  tags["userId"] = listOf("1001", "1002").toSet()
+  pubMsg.tags = tags
+  val subDetails = SubscribeDetails()
+  subDetails.conditions = "tenantId^1&userId^1,2,3|tenantId^2|tenantId^3"
+  val conditions = subDetails.getConditionGroup()
+  System.err.println(pubMsg.matches(conditions))
 
 }

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5e3590e4-9edb-4667-912f-9433cbf05d1f" name="Default Changelist" comment="推送条件优化">
+    <list default="true" id="5e3590e4-9edb-4667-912f-9433cbf05d1f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/EventGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/EventGenerator.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/InnerEventMessage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/InnerEventMessage.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/SubscribeDetails.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/SubscribeDetails.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus-core/src/main/kotlin/com/test/core/controller/PublishController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/bus-core/src/main/kotlin/com/test/core/controller/PublishController.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,11 +34,11 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bus-core/src/main/kotlin/com/test/core/controller/PublishController.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
+            <state relative-caret-position="-180">
               <caret line="102" column="43" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="43" />
             </state>
           </provider>
@@ -50,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/SubscribeDetails.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1474">
-              <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
+            <state relative-caret-position="414">
+              <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -59,8 +56,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/InnerEventMessage.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="132">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <element signature="e#30#288#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,8 +176,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="223" />
-    <option name="width" value="1707" />
+    <option name="x" value="226" />
+    <option name="width" value="1705" />
     <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -185,90 +185,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sc-bus" type="462c0819:PsiDirectoryNode" />
-              <item name="bus-core" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="sc-bus" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bus-manager" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="sc-bus" type="58d84e3e:PackageViewProjectNode" />
-              <item name="bus-sdk" type="616d4139:PackageViewModuleNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
@@ -278,7 +195,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593424398183" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1593426448803" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -326,7 +243,7 @@
     </option>
     <option name="contentProportion" value="0.12978142" />
   </component>
-  <component name="RunManager" selected="Kotlin.com.test.common.pojo.SubscribeDetailsKt">
+  <component name="RunManager" selected="Kotlin.com.test.common.pojo.InnerEventMessageKt">
     <configuration name="com.test.common.pojo.EventGeneratorKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="bus-common" />
       <option name="VM_PARAMETERS" />
@@ -340,6 +257,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="com.test.common.pojo.InnerEventMessageKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="bus-common" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="com.test.common.pojo.InnerEventMessageKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="com.test.common.pojo.SubscribeDetailsKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="bus-common" />
       <option name="VM_PARAMETERS" />
@@ -348,19 +278,6 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.test.common.pojo.SubscribeDetailsKt" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.test.core.controller.PublishControllerKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
-      <module name="bus-core" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.test.core.controller.PublishControllerKt" />
       <option name="WORKING_DIRECTORY" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -408,11 +325,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.com.test.common.pojo.InnerEventMessageKt" />
         <item itemvalue="Kotlin.com.test.common.pojo.SubscribeDetailsKt" />
         <item itemvalue="Kotlin.com.test.common.pojo.EventGeneratorKt" />
         <item itemvalue="Kotlin.com.test.core.share.CachesKt" />
         <item itemvalue="Kotlin.com.test.core.processor.impl.QueueDelayProcessorKt" />
-        <item itemvalue="Kotlin.com.test.core.controller.PublishControllerKt" />
       </list>
     </recent_temporary>
   </component>
@@ -450,7 +367,8 @@
       <workItem from="1593395521958" duration="57000" />
       <workItem from="1593395685764" duration="10000" />
       <workItem from="1593395720796" duration="7000" />
-      <workItem from="1593395783212" duration="3219000" />
+      <workItem from="1593395783212" duration="3441000" />
+      <workItem from="1593424737341" duration="1699000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1591250228370</created>
@@ -529,11 +447,18 @@
       <option name="project" value="LOCAL" />
       <updated>1592135254517</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="推送条件优化">
+      <created>1593424429853</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1593424429853</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137961000" />
+    <option name="totallyTimeSpent" value="139882000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -546,7 +471,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="Image Layers" order="1" />
@@ -558,8 +482,8 @@
       <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25070822" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4546742" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.17847025" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3385269" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -644,6 +568,16 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>map.keys</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>!pub!!.containsAll(sub!!)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>message.tags</expression-string>
         <language-id>kotlin</language-id>
@@ -989,13 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bus-core/src/main/kotlin/com/test/core/controller/PublishController.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="102" column="43" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/json/JsonUtils.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
@@ -1005,15 +932,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/SubscribeDetails.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1474">
-          <caret line="71" column="1" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
+        <state relative-caret-position="414">
+          <caret line="26" column="50" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bus-core/src/main/kotlin/com/test/core/controller/PublishController.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-180">
+          <caret line="102" column="43" selection-start-line="102" selection-start-column="26" selection-end-line="102" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bus-common/src/main/kotlin/com/test/common/pojo/InnerEventMessage.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="132">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#30#288#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
