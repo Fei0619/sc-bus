@@ -1,5 +1,7 @@
 package com.test.common.pojo
 
+import com.test.common.json.JsonUtils
+import org.hibernate.mapping.Collection
 import kotlin.collections.ArrayList
 
 /**
@@ -12,7 +14,6 @@ class EventGenerator {
 
   companion object {
     private var sign = -1
-    private var filterSign = -1
 
     fun create(): EventGenerator {
       return EventGenerator()
@@ -51,33 +52,14 @@ class EventGenerator {
     return this
   }
 
-  fun and(key: String, vararg values: String): EventGenerator {
+  fun addTag(key: String, vararg values: String): EventGenerator {
     val message = messages[sign]
-    val map = message.tags[filterSign]
-    map[key] = values.toHashSet()
+    message.tags[key] = values.toHashSet()
     return this
   }
 
-  fun and(key: String, values: Collection<String>): EventGenerator {
+  fun addTag(key: String, values: Collection): EventGenerator {
     val message = messages[sign]
-    val map = message.tags[filterSign]
-    map[key] = values.toHashSet()
-    return this
-  }
-
-  fun or(key: String, vararg values: String): EventGenerator {
-    val message = messages[sign]
-    val map = HashMap<String, Set<String>>()
-    map[key] = values.toHashSet()
-    message.tags.add(map)
-    return this
-  }
-
-  fun or(key: String, values: Collection<String>): EventGenerator {
-    val message = messages[sign]
-    val map = HashMap<String, Set<String>>()
-    map[key] = values.toHashSet()
-    message.tags.add(map)
     return this
   }
 
@@ -85,11 +67,14 @@ class EventGenerator {
 
 fun main() {
   val generator = EventGenerator.create()
-//  generator.add("topic1", "")
-//      .delayMillis(60)
-//      .idempotentKey("idempotentKey1").and("key1", "value1")
-//  generator.add("topic2", "")
-//      .delayMillis(100)
-//      .idempotentKey("idempotentKey2").and("key2", "value1", "value2")
-//  System.err.println(JsonUtils.toJsonString(generator.messages))
+  generator.add("eventCode1", "payload1")
+      .idempotentKey("idempotentKey1")
+      .delayMillis(10)
+      .addTag("key1", "value1")
+      .addTag("key2", "value1", "value2")
+
+  generator.add("eventCode2", "payload2")
+      .idempotentKey("idempotentKey2")
+      .delayMillis(10)
+  System.err.println(JsonUtils.toJsonString(generator.messages))
 }

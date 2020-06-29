@@ -100,7 +100,7 @@ class PublishController(private val eventPublisher: EventPublisher,
     }
     val actualSubList = ArrayList<SubscribeInfo>()
     subList.filter {
-      val conditions = it.getConditions()
+      val conditions = it.getConditionGroup()
       val match = message.matches(conditions)
       if (!match && logger.isDebugEnabled) {
         logger.debug("subscribeId=${it.subscribeId} 的订阅条件：${it.conditions}与事件推送条件：${JsonUtils.toJsonString(conditions)}不匹配...")

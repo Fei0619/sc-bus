@@ -20,31 +20,44 @@ class InnerEventMessage<T> {
   var payload: T? = null
   var idempotentKey: String = ""
   var delayMillis: Long = 0
-  var tags = ArrayList<HashMap<String, Set<String>>>()
+  var tags = HashMap<String, Set<String>>()
   var eventTime = System.currentTimeMillis()
 
   fun needDelay(): Boolean {
     return delayMillis > 0
   }
 
-  fun matches(conditions: Set<String>?): Boolean {
+  fun matches(conditions: List<Map<String, Set<String>>>?): Boolean {
+    // conditions -> 订阅的条件
+    // tags       -> 推送条件
+    var i = 0
     if (conditions == null || conditions.isEmpty()) return true
-
-//    if (tags.isEmpty()) return false
-//    val pattern = Pattern.compile(":")
-//    val tagMap = tags
-//        .map { it.split(pattern, 2) }
-//        .filter { it.size == 2 }
-//        .associateBy { it[0] }
-//    val keys = tagMap.keys
-//    conditions.forEach {
-//      val array = it.split(pattern, 2)
-//      if (array.size == 2) {
-//        if (keys.contains(array[0]) && array[1] != tagMap.getValue(array[0])[1]) {
-//          return false
-//        }
-//      }
-//    }
+    val pubKeys = tags.keys
+    if (pubKeys.isEmpty()) return false
+    for (map in conditions) {
+      val subKeys = map.keys
+      if (subKeys.isEmpty()) {
+        i++
+        continue
+      }
+      for (subKey in subKeys) {
+        if (!pubKeys.contains(subKey)) {
+          i++
+          continue
+        }
+        val pub = tags[subKey]
+        val sub = map[subKey]
+        if (!pub!!.containsAll(sub!!)) {
+          i++
+          continue
+        } else {
+          break
+        }
+      }
+    }
+    if (i > conditions.size) {
+      return false
+    }
     return true
   }
 
